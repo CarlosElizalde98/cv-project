@@ -8,7 +8,7 @@ return (
     <form className="general">
          <h2>Enter your general information here</h2>
         <label htmlFor="firstName">First Name</label>
-        <input  type="text" id="firstName" placeholder='first name'/>
+        <input  type="text" id="firstName" placeholder='First Name'/>
         <label htmlFor="lastName">Last Name</label>
         <input  type="text" id="lastName" placeholder='Last Name'/>
         <label htmlFor="email">Email Address</label>

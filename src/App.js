@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import General from "./components/General";
 import Education from "./components/Education"
+import Practical from "./components/Practical"
 
 import './App.css';
 class App extends Component{
@@ -24,6 +25,7 @@ class App extends Component{
 
         const generalInformation = {input, generalInfo}
         const educationInformation = {input, education}
+        const jobExperience = {input, jobExp}
 
         return(
             <div className="container">
@@ -31,6 +33,7 @@ class App extends Component{
                 <div className="general-info">
                     <General generalInfo = {generalInformation} />
                     <Education eduInfo = {educationInformation} />
+                    <Practical pracInfo = {jobExperience} />
                 </div>
             </div>
         );

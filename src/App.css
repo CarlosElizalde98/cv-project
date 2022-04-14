@@ -57,7 +57,7 @@ body {
   background-color: gray;
 }
 
-input[type=text], input[type=email]{
+input[type=text], input[type=email], textarea{
   padding: 10px;
   margin: 10px 0;
   border: 2px solid #eee;
