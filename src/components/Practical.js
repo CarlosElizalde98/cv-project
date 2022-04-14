@@ -3,10 +3,10 @@ import React from "react";
 const Practical = (props) => {
 
     return (
-        <form className="general">
+        <form className="general" id="practical">
             <h2>Enter your Practical Experience Here</h2>
             <label htmlFor="company name">Enter your Company Name Here</label>
-            <input type="text" id="company name" placeholder="Company Name" />
+            <input type="text" id="company-name" placeholder="Company Name" />
             <label htmlFor="position">Enter your Position Title here</label>
             <input type="text" id="position" placeholder="Position Title" />
             <label htmlFor="tasks">Enter the main tasks of your job here</label>
