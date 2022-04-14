@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  display: flex;
+  flex-direction: center;
+  padding: 10px;
+  margin: 10px;
+  justify-content: center;
+  font-family: 'Work Sans', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.general-info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 2%;
+  border-radius: 12px;
+  background-color: gray;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.general {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.submit {
+  border-radius: 12px;
+  margin: 10px;
+  padding: 10px;
 }
