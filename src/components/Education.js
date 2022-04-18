@@ -2,6 +2,8 @@ import React from 'react'
 
 const Education = (props) => {
 
+    const { eduInfo } = props;
+
     return (
         <form className="general" id = "education">
             <h2>Add your Education Experience here</h2>
@@ -11,7 +13,7 @@ const Education = (props) => {
             <input type="text" id="study" placeholder='Add Degree Here' />
             <label htmlFor="Date">Enter the Date Range for your Degree here</label>
             <input type="text" id="date-range" placeholder="Enter Year From to Year To Degree Completion" />
-            <button type="submit" className="submit">Submit</button>
+            <button type="submit" className="submit" onClick={eduInfo}>Submit</button>
         </form>
     );
 }

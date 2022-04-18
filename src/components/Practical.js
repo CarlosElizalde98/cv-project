@@ -2,6 +2,8 @@ import React from "react";
 
 const Practical = (props) => {
 
+    const { pracInfo } = props;
+
     return (
         <form className="general" id="practical">
             <h2>Enter your Practical Experience Here</h2>
@@ -13,7 +15,7 @@ const Practical = (props) => {
             <textarea id="tasks" name="tasks" rows="6" cols="40" placeholder="Tell us here..." />
             <label htmlFor="date-range">Tell us the Year From and Until you worked at this company</label>
             <input type="text" id="work-dates" placeholder="Year From to Year To" />
-            <button type="submit" className="submit">Submit</button>
+            <button type="submit" className="submit" onClick={pracInfo}>Submit</button>
         </form>
     )
 }

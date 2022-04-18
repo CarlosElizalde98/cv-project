@@ -65,3 +65,21 @@ input[type=text], input[type=email], textarea{
   border-radius: 10px;
   width: 100%;
 }
+
+.resume-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px;
+  margin: 20px;
+  width: 100%;
+  height: auto;
+}
+
+.resume-item {
+  flex: 1 1 auto;
+  align-self: flex-start;
+  font-size: 1.5rem;
+  min-width: 100%;
+  margin: 5px;
+}

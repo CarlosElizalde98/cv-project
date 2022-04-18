@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import General from "./components/General";
 import Education from "./components/Education"
 import Practical from "./components/Practical"
+import RenderOutput from './components/RenderOutput';
 
 import './App.css';
 class App extends Component{
@@ -12,6 +13,11 @@ class App extends Component{
             input: {
                 text: ''
             },
+
+            isGenSubmitted: true,
+            isEduSubmitted: true,
+            isJobSubmitted: true,
+
             generalInfo: [],
             education: [],
             jobExp: [],
@@ -25,43 +31,56 @@ class App extends Component{
 
     onGeneralSubmit = (e) => {
         e.preventDefault()
-            let obj = [{
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
+            let obj =  { Name: document.getElementById('firstName').value
+                + ' ' + document.getElementById('lastName').value,
+                Email: document.getElementById('email').value,
+                Phone: document.getElementById('phone').value,
             }
-            ]
+            let gen = Object.keys(obj).map((key) => [`${key}:  ${obj[key]}`])
+             console.log(gen)
+            this.setState( prevState => ({
+                isGenSubmitted: !prevState.isGenSubmitted,
+            }))
             this.setState({
-                generalInfo: this.state.generalInfo.concat(obj)
+                generalInfo: this.state.generalInfo.concat(gen),
             })
-            console.log(this.state.generalInfo)
+            console.log(e)
         
     }
 
     onEduSubmit = (e) => {
         e.preventDefault()
         let obj = [{
-            schoolName: document.getElementById('school-name').value,
-            study: document.getElementById('study').value,
-            dateRange: document.getElementById('date-range').value,
+            School: document.getElementById('school-name').value,
+            Degree: document.getElementById('study').value,
+            To: document.getElementById('date-range').value,
         }]
-        this.setState({
-            education: this.state.education.concat(obj)
+        let edu = []
+        Object.entries(obj).forEach(([key, value])=> {
+            edu.push(`${key}: ${value}`)
         })
+        this.setState( prevState => ({
+            education: this.state.education.concat(edu),
+            isEduSubmitted: !prevState.isEduSubmitted,
+        }))
     }
 
     onJobsSubmit = (e) => {
         e.preventDefault()
         let obj = [{
-            company: document.getElementById('company-name').value,
-            position: document.getElementById('position').value,
-            tasks: document.getElementById('tasks').value,
-            workRange: document.getElementById('work-dates').value,
+            Company: document.getElementById('company-name').value,
+            Position: document.getElementById('position').value,
+            Tasks: document.getElementById('tasks').value,
+            Dates: document.getElementById('work-dates').value,
         }]
-        this.setState({
-            jobExp: this.state.jobExp.concat(obj)
+        let jobs = []
+        Object.entries(obj).forEach(([key, value])=> {
+            jobs.push(`${key}: ${value}`)
         })
+        this.setState( prevState => ({
+            jobExp: this.state.jobExp.concat(jobs),
+            isJobSubmitted: !prevState.isJobSubmitted,
+        }))
     }
 
     render(){
@@ -71,9 +90,12 @@ class App extends Component{
             <div className="container">
                 <h1 className="title">Resume Builder</h1>
                 <div className="general-info">
-                    <General generalInfo = {this.onGeneralSubmit} />
-                    <Education eduInfo = {this.onEduSubmit} />
-                    <Practical pracInfo = {this.onJobsSubmit} />
+                    {this.state.isGenSubmitted ? 
+                    <General generalInfo = {this.onGeneralSubmit} /> : <RenderOutput items = {this.state.generalInfo} />}
+                    {this.state.isEduSubmitted ? 
+                    <Education eduInfo = {this.onEduSubmit} /> : <RenderOutput items = {this.state.education} />}
+                    {this.state.isJobSubmitted ? 
+                    <Practical pracInfo = {this.onJobsSubmit} /> : <RenderOutput items = {this.state.jobExp} />}
                 </div>
             </div>
         );
