@@ -18,9 +18,33 @@ class App extends Component{
             isEduSubmitted: true,
             isJobSubmitted: true,
 
-            generalInfo: [],
-            education: [],
-            jobExp: [],
+            
+            generalInfo: [
+                {
+                Name: '',
+                Email: '',
+                Phone: '',
+            }
+            ],
+          
+            education: [
+                {
+                    School: '',
+                    Degree: '',
+                    To: '',
+                }
+            ],
+           
+            jobExp: [
+                {
+                    Company: '',
+                    Position: '',
+                    Tasks: '',
+                    Dates: '',
+                }
+            ],
+
+     
         }
 
         this.onGeneralSubmit = this.onGeneralSubmit.bind(this)
@@ -36,49 +60,43 @@ class App extends Component{
                 Email: document.getElementById('email').value,
                 Phone: document.getElementById('phone').value,
             }
-            let gen = Object.keys(obj).map((key) => [`${key}:  ${obj[key]}`])
-             console.log(gen)
+            // let gen = Object.keys(obj).map((key) => [`${key}:  ${obj[key]}`])
+            
             this.setState( prevState => ({
                 isGenSubmitted: !prevState.isGenSubmitted,
+                // generalInfo: this.state.generalInfo.concat(gen),
+                generalInfo: obj,
             }))
-            this.setState({
-                generalInfo: this.state.generalInfo.concat(gen),
-            })
-            console.log(e)
-        
     }
 
     onEduSubmit = (e) => {
         e.preventDefault()
-        let obj = [{
+        let obj = {
             School: document.getElementById('school-name').value,
             Degree: document.getElementById('study').value,
             To: document.getElementById('date-range').value,
-        }]
-        let edu = []
-        Object.entries(obj).forEach(([key, value])=> {
-            edu.push(`${key}: ${value}`)
-        })
+        }
+        // let edu = Object.keys(obj).map((key) => [`${key}: ${obj[key]}`])
+        
         this.setState( prevState => ({
-            education: this.state.education.concat(edu),
+            // education: this.state.education.concat(edu),
+            education: obj,
             isEduSubmitted: !prevState.isEduSubmitted,
         }))
     }
 
     onJobsSubmit = (e) => {
         e.preventDefault()
-        let obj = [{
+        let obj = {
             Company: document.getElementById('company-name').value,
             Position: document.getElementById('position').value,
             Tasks: document.getElementById('tasks').value,
             Dates: document.getElementById('work-dates').value,
-        }]
-        let jobs = []
-        Object.entries(obj).forEach(([key, value])=> {
-            jobs.push(`${key}: ${value}`)
-        })
+        }
+        // let jobs = Object.keys(obj).map((key) => [`${key}: ${obj[key]}`])
         this.setState( prevState => ({
-            jobExp: this.state.jobExp.concat(jobs),
+            // jobExp: this.state.jobExp.concat(jobs),
+            jobExp: obj,
             isJobSubmitted: !prevState.isJobSubmitted,
         }))
     }
