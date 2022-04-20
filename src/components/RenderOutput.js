@@ -11,6 +11,12 @@ class RenderOutput extends Component {
         this.editItems = this.editItems.bind(this)
     }
 
+    handleSave = () => {
+        this.setState( prevstate => ({
+            editing: !prevstate.editing,
+        }))
+    }
+
     renderItems = (props) => {
         const {items} = props;
         let objects = Object.keys(items).map((key) => [`${key}: ${items[key]}`])
@@ -19,7 +25,7 @@ class RenderOutput extends Component {
                 {objects.map((item) => {
                     return <div key={item} className="resume-item">
                         <p>{item}</p>
-                        <button onClick={this.setState({editing: true})}>Edit</button>
+                        <button onClick={this.handleSave}>Edit</button>
                         </div>
                 })}
             </div>
@@ -39,7 +45,7 @@ class RenderOutput extends Component {
         return (
             <div className="resume-display">
                 {objects}
-                <button>Save</button>
+                <button onClick={this.handleSave}>Save</button>
             </div>
         )
     }
