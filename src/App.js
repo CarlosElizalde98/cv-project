@@ -44,6 +44,7 @@ class App extends Component{
                 }
             ],
 
+            
      
         }
 
@@ -60,11 +61,11 @@ class App extends Component{
                 Email: document.getElementById('email').value,
                 Phone: document.getElementById('phone').value,
             }
-            // let gen = Object.keys(obj).map((key) => [`${key}:  ${obj[key]}`])
+       
             
             this.setState( prevState => ({
                 isGenSubmitted: !prevState.isGenSubmitted,
-                // generalInfo: this.state.generalInfo.concat(gen),
+           
                 generalInfo: obj,
             }))
     }
@@ -76,10 +77,10 @@ class App extends Component{
             Degree: document.getElementById('study').value,
             To: document.getElementById('date-range').value,
         }
-        // let edu = Object.keys(obj).map((key) => [`${key}: ${obj[key]}`])
+    
         
         this.setState( prevState => ({
-            // education: this.state.education.concat(edu),
+         
             education: obj,
             isEduSubmitted: !prevState.isEduSubmitted,
         }))
@@ -93,9 +94,9 @@ class App extends Component{
             Tasks: document.getElementById('tasks').value,
             Dates: document.getElementById('work-dates').value,
         }
-        // let jobs = Object.keys(obj).map((key) => [`${key}: ${obj[key]}`])
+    
         this.setState( prevState => ({
-            // jobExp: this.state.jobExp.concat(jobs),
+           
             jobExp: obj,
             isJobSubmitted: !prevState.isJobSubmitted,
         }))
