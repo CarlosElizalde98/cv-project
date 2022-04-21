@@ -5,7 +5,7 @@ class RenderOutput extends Component {
         super(props)
 
         this.state = {
-            editing: false,
+            editing: true,
         }
     }
     handleChanges = (e) => {
@@ -23,15 +23,16 @@ class RenderOutput extends Component {
     renderItems = (props) => {
         const {items} = props;
         let objects = Object.keys(items).map((key) => [`${key}: ${items[key]}`])
+        let displays = objects.map((item) => {
+            return <div key={item} className="resume-item">
+                <p>{item}</p>
+                </div>
+        })
         
         return (
             <div className="resume-display">
-                {objects.map((item) => {
-                    return <div key={item} className="resume-item">
-                        <p>{item}</p>
-                        <button onClick={this.handleSave}>Edit</button>
-                        </div>
-                })}
+                {displays}
+                  <button onClick={this.handleSave}>Edit</button>
             </div>
         );
     }
