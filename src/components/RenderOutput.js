@@ -7,10 +7,13 @@ class RenderOutput extends Component {
         this.state = {
             editing: false,
         }
-        this.renderItems = this.renderItems.bind(this)
-        this.editItems = this.editItems.bind(this)
     }
+    handleChanges = (e) => {
+        const obj = e.target.id;
+        const value = e.target.value;
+        this.props.handleChange(this.props.name, obj, value)
 
+    }
     handleSave = () => {
         this.setState( prevstate => ({
             editing: !prevstate.editing,
@@ -20,6 +23,7 @@ class RenderOutput extends Component {
     renderItems = (props) => {
         const {items} = props;
         let objects = Object.keys(items).map((key) => [`${key}: ${items[key]}`])
+        
         return (
             <div className="resume-display">
                 {objects.map((item) => {
@@ -39,7 +43,8 @@ class RenderOutput extends Component {
                 <input type="text" 
                 defaultValue={items[key]} 
                 key={key}
-                name={key}
+                id={key}
+                onChange={(e) => this.handleChanges(e)}
              />
         )
         return (
@@ -51,7 +56,7 @@ class RenderOutput extends Component {
     }
 
     render() {
-    
+     
         return (
             <div>{this.state.editing ? (this.renderItems(this.props)) : (this.editItems(this.props))} </div>
         );

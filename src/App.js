@@ -5,6 +5,7 @@ import Practical from "./components/Practical"
 import RenderOutput from './components/RenderOutput';
 
 import './App.css';
+
 class App extends Component{
     constructor(){
         super();
@@ -51,9 +52,34 @@ class App extends Component{
         this.onGeneralSubmit = this.onGeneralSubmit.bind(this)
         this.onEduSubmit = this.onEduSubmit.bind(this)
         this.onJobsSubmit = this.onJobsSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+    
 
     }
 
+    handleChange = (items, name, value) => {
+    
+        if (items === 'generalInfo'){
+            this.setState( prevState => ({
+                generalInfo: {...prevState.generalInfo, [name]: value},
+                
+            }))
+        }
+        else if (items === 'education'){
+            this.setState( prevState => ({
+                education: {...prevState.education, [name]: value},
+            }))
+        }
+        else if (items === 'jobExp'){
+            this.setState( prevState => ({
+                jobExp: {...prevState.jobExp, [name]: value}
+            }))
+        }
+        else {
+            return null;
+        }
+        
+    }
     onGeneralSubmit = (e) => {
         e.preventDefault()
             let obj =  { Name: document.getElementById('firstName').value
@@ -69,6 +95,8 @@ class App extends Component{
                 generalInfo: obj,
             }))
     }
+
+ 
 
     onEduSubmit = (e) => {
         e.preventDefault()
@@ -104,17 +132,17 @@ class App extends Component{
 
     render(){
 
-
+     
         return(
             <div className="container">
                 <h1 className="title">Resume Builder</h1>
                 <div className="general-info">
                     {this.state.isGenSubmitted ? 
-                    <General generalInfo = {this.onGeneralSubmit} /> : <RenderOutput items = {this.state.generalInfo} />}
+                    <General generalInfo = {this.onGeneralSubmit} /> : <RenderOutput items = {this.state.generalInfo} handleChange = {this.handleChange} name="generalInfo"/>}
                     {this.state.isEduSubmitted ? 
-                    <Education eduInfo = {this.onEduSubmit} /> : <RenderOutput items = {this.state.education} />}
+                    <Education eduInfo = {this.onEduSubmit} /> : <RenderOutput items = {this.state.education} handleChange = {this.handleChange} name="education"/>}
                     {this.state.isJobSubmitted ? 
-                    <Practical pracInfo = {this.onJobsSubmit} /> : <RenderOutput items = {this.state.jobExp} />}
+                    <Practical pracInfo = {this.onJobsSubmit} /> : <RenderOutput items = {this.state.jobExp} handleChange = {this.handleChange} name="jobExp"/>}
                 </div>
             </div>
         );
