@@ -69,17 +69,17 @@ input[type=text], input[type=email], textarea{
 .resume-display {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-self: flex-start;
   padding: 20px;
-  margin: 20px;
+  margin-right: 20px;
   width: 100%;
   height: auto;
 }
 
 .resume-item {
   flex: 1 1 auto;
-  align-self: flex-start;
+  align-self: center;
   font-size: 1.5rem;
   min-width: 100%;
-  margin: 5px;
+  margin: 15px 0;
 }

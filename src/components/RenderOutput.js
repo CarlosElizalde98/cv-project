@@ -30,9 +30,9 @@ class RenderOutput extends Component {
         })
         
         return (
-            <div className="resume-display">
+            <div>
                 {displays}
-                  <button onClick={this.handleSave}>Edit</button>
+                  <button className="submit" onClick={this.handleSave}>Edit</button>
             </div>
         );
     }
@@ -51,7 +51,7 @@ class RenderOutput extends Component {
         return (
             <div className="resume-display">
                 {objects}
-                <button onClick={this.handleSave}>Save</button>
+                <button className="submit" onClick={this.handleSave}>Save</button>
             </div>
         )
     }
@@ -59,7 +59,7 @@ class RenderOutput extends Component {
     render() {
      
         return (
-            <div>{this.state.editing ? (this.renderItems(this.props)) : (this.editItems(this.props))} </div>
+            <div className="resume-display">{this.state.editing ? (this.renderItems(this.props)) : (this.editItems(this.props))} </div>
         );
 }
 }
