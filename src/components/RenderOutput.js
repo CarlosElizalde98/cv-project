@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, { useState } from "react";
 
-class RenderOutput extends Component {
-    constructor(props){
-        super(props)
+function RenderOutput(props) {
+  const [editing, setEdit] = useState(true);
 
         this.state = {
             editing: true,
@@ -11,11 +10,11 @@ class RenderOutput extends Component {
     handleChanges = (e) => {
         const obj = e.target.id;
         const value = e.target.value;
-        this.props.handleChange(this.props.name, obj, value)
-
-    }
-    handleSave = () => {
-        this.setState( prevstate => ({
+        props.handleChange(props.name, obj, value)
+        
+        }
+    const handleSave = () => {
+        setEdit( prevstate => ({
             editing: !prevstate.editing,
         }))
     }
@@ -30,9 +29,9 @@ class RenderOutput extends Component {
         })
         
         return (
-            <div>
+            <div className="resume-display">
                 {displays}
-                  <button className="submit" onClick={this.handleSave}>Edit</button>
+                  <button onClick={handleSave}>Edit</button>
             </div>
         );
     }
@@ -45,23 +44,20 @@ class RenderOutput extends Component {
                 defaultValue={items[key]} 
                 key={key}
                 id={key}
-                onChange={(e) => this.handleChanges(e)}
+                onChange={(e) => handleChanges(e)}
              />
         )
         return (
             <div className="resume-display">
                 {objects}
-                <button className="submit" onClick={this.handleSave}>Save</button>
+                <button onClick={handleSave}>Save</button>
             </div>
         )
     }
 
-    render() {
-     
-        return (
-            <div className="resume-display">{this.state.editing ? (this.renderItems(this.props)) : (this.editItems(this.props))} </div>
-        );
-}
-}
+    return (
+        <div>{editing ? (renderItems(props)) : (editItems(props))} </div>
+    );
+};
 
 export default RenderOutput;

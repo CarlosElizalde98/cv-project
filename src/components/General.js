@@ -3,7 +3,6 @@ import React from 'react';
 
 const General = (props) => {
 
-    const { generalInfo } = props;
 
 return (
     <form className="general" id="general">
@@ -16,7 +15,7 @@ return (
         <input type="email" id="email" placeholder='Email Address'/>
         <label htmlFor="phoneNumber">Phone Number</label>
         <input type="text" id="phone" placeholder='Phone Number'/>
-        <button type="submit" className="submit" onClick={generalInfo}>Submit Info</button>
+        <button type="submit" className="submit" id="general-submit">Submit Info</button>
     </form>
 
 );

@@ -15,7 +15,7 @@ const Practical = (props) => {
             <textarea id="tasks" name="tasks" rows="6" cols="40" placeholder="Tell us here..." />
             <label htmlFor="date-range">Tell us the Year From and Until you worked at this company</label>
             <input type="text" id="work-dates" placeholder="Year From to Year To" />
-            <button type="submit" className="submit" onClick={pracInfo}>Submit</button>
+            <button type="submit" className="submit" onClick={pracInfo} id="practical-submit">Submit</button>
         </form>
     )
 }

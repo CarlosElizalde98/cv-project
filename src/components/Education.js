@@ -13,7 +13,7 @@ const Education = (props) => {
             <input type="text" id="study" placeholder='Add Degree Here' />
             <label htmlFor="Date">Enter the Date Range for your Degree here</label>
             <input type="text" id="date-range" placeholder="Enter Year From to Year To Degree Completion" />
-            <button type="submit" className="submit" onClick={eduInfo}>Submit</button>
+            <button type="submit" className="submit" onClick={eduInfo} id="education-submit">Submit</button>
         </form>
     );
 }
