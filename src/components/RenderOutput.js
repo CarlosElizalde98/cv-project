@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-function RenderOutput(props) {
-  const [editing, setEdit] = useState(true);
+function RenderOutput({items, handleChange, name}) {
+    const [editing, setEdit] = useState(true)
 
         this.state = {
             editing: true,
@@ -10,24 +10,24 @@ function RenderOutput(props) {
     handleChanges = (e) => {
         const obj = e.target.id;
         const value = e.target.value;
-        props.handleChange(props.name, obj, value)
+        handleChange(name, obj, value)
         
         }
     const handleSave = () => {
-        setEdit( prevstate => ({
-            editing: !prevstate.editing,
-        }))
+        setEdit( editing => !editing
+        )
     }
-
-    renderItems = (props) => {
-        const {items} = props;
+    
+    const renderItems = (props) => {
+        const items = props;
+        console.log(items)
         let objects = Object.keys(items).map((key) => [`${key}: ${items[key]}`])
+        console.log(objects)
         let displays = objects.map((item) => {
             return <div key={item} className="resume-item">
                 <p>{item}</p>
                 </div>
         })
-        
         return (
             <div className="resume-display">
                 {displays}
@@ -36,8 +36,8 @@ function RenderOutput(props) {
         );
     }
 
-    editItems = (props) => {
-        const {items} = props;
+    const editItems = (props) => {
+        const items = props;
         let objects = 
             Object.keys(items).map((key) => 
                 <input type="text" 
@@ -55,8 +55,8 @@ function RenderOutput(props) {
         )
     }
 
-    return (
-        <div>{editing ? (renderItems(props)) : (editItems(props))} </div>
+  return (
+        <div>{editing ? (renderItems(items)) : (editItems(items))} </div>
     );
 };
 

@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const General = (props) => {
+const General = ({generalInfo}) => {
 
 
 return (
@@ -15,7 +15,7 @@ return (
         <input type="email" id="email" placeholder='Email Address'/>
         <label htmlFor="phoneNumber">Phone Number</label>
         <input type="text" id="phone" placeholder='Phone Number'/>
-        <button type="submit" className="submit" id="general-submit">Submit Info</button>
+        <button type="submit" onClick={generalInfo} className="submit" id="general-submit">Submit Info</button>
     </form>
 
 );

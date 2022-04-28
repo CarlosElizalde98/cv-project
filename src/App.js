@@ -11,27 +11,24 @@ const App = () => {
     const [isEduSubmit, setEduSubmit] = useState(true);
     const [isJobSubmit, setJobSubmit] = useState(true);
 
-    const [genInfo, setGenInfo] = useState([{Name: '', Email:'', Phone: ''}])
-    const [education, setEdu] = useState([{School: '', Degree:'', To:''}])
-    const [jobExp, setJob] = useState([{Company:'', Position:'', Tasks:'', Dates:''}])
+    const [genInfo, setGenInfo] = useState({Name: '', Email:'', Phone: ''})
+    const [education, setEdu] = useState({School: '', Degree:'', To:''})
+    const [jobExp, setJob] = useState({Company:'', Position:'', Tasks:'', Dates:''})
 
     const handleChange = (items, name, value) => {
     
         if (items === 'generalInfo'){
-            setGenInfo( prevState => ({
-                genInfo: {...prevState.genInfo, [name]: value},
+            setGenInfo({...genInfo, [name]: value},
                 
-            }))
+            )
         }
         else if (items === 'education'){
-            setEdu( prevState => ({
-                education: {...prevState.education, [name]: value},
-            }))
+            setEdu({...education, [name]: value},
+            )
         }
         else if (items === 'jobExp'){
-            setJob( prevState => ({
-                jobExp: {...prevState.jobExp, [name]: value}
-            }))
+            setJob({...jobExp, [name]: value}
+            )
         }
         else {
             return null;
@@ -39,29 +36,22 @@ const App = () => {
         
     }
 
-    useEffect(() => {
-        const submit = document.getElementById('general-submit')
-        const onGeneralSubmit = (e) => {
-            e.preventDefault()
-                let obj =  { Name: document.getElementById('firstName').value
-                    + ' ' + document.getElementById('lastName').value,
-                    Email: document.getElementById('email').value,
-                    Phone: document.getElementById('phone').value,
-                }
-        
-                
-                setGenSubmit( prevState => ({
-                    isGenSubmit: !prevState.isGenSubmit,
-                }))
+    const onGeneralSubmit = (e) => {
+        e.preventDefault()
+            let obj =  { Name: document.getElementById('firstName').value
+                + ' ' + document.getElementById('lastName').value,
+                Email: document.getElementById('email').value,
+                Phone: document.getElementById('phone').value,
+            }
+       
+            
+            setGenSubmit( isGenSubmit => (
+                !isGenSubmit
+            ))
 
-                setGenInfo({genInfo: obj})
-        }
+            setGenInfo(obj)
+    }
 
-        submit.addEventListener("click", onGeneralSubmit)
-        return() => {
-            submit.removeEventListener("click", onGeneralSubmit)
-        }
-    })
     const onEduSubmit = (e) => {
         e.preventDefault()
         let obj = {
@@ -71,11 +61,11 @@ const App = () => {
         }
     
         
-        setEduSubmit( prevState => ({
-            isEduSubmitted: !prevState.isEduSubmitted,
-        }))
+        setEduSubmit( isEduSubmit => (
+            !isEduSubmit
+        ))
 
-        setEdu({education: obj})
+        setEdu(obj)
     }
 
         const onJobsSubmit = (e) => {
@@ -87,11 +77,10 @@ const App = () => {
             Dates: document.getElementById('work-dates').value,
         }
     
-        setJobSubmit( prevState => ({
-            isJobSubmit: !prevState.isJobSubmit,
-        }))
+        setJobSubmit( isJobSubmit => (!isJobSubmit
+        ))
 
-        setJob({job: obj})
+        setJob(obj)
 
     }
 
@@ -101,7 +90,7 @@ const App = () => {
                 <h1 className="title">Resume Builder</h1>
                 <div className="general-info">
                     {isGenSubmit ? 
-                    <General /> : <RenderOutput items = {genInfo} handleChange = {handleChange} name="generalInfo"/>}
+                    <General generalInfo = {onGeneralSubmit} /> : <RenderOutput items = {genInfo} handleChange = {handleChange} name="generalInfo"/>}
                     {isEduSubmit ? 
                     <Education eduInfo = {onEduSubmit} /> : <RenderOutput items = {education} handleChange = {handleChange} name="education"/>}
                     {isJobSubmit ? 
